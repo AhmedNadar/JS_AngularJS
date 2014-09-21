@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html data-ng-app>
+<head>
+	<title>AngularJS - Using Directives</title>
+</head>
+<body data-ng-init="name='Hello Angular'">
+	<span>Hide:</span> <input type="checkbox" data-ng-model="isHidden"><br>
+	<div data-ng-hide="isHidden">
+		<span>Name:</span> <input type="text" ng-model="name" />
+		<br> 
+		<!-- regular way to bind -->
+		<span>{{name}}</span> 
+		<br> 
+		<!-- another way to bind -->
+		<span data-ng-bind="name"></span>
+	</div>
+	<button data-ng-click="name='Ahmed'">Change Name</button>
+	<!-- Script -->
+	<script src="angular.js" type="text/javascript"></script>
+</body>
+</html>
