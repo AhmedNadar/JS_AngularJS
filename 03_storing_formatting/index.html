@@ -9,21 +9,21 @@
 											{name: 'Headphone', origin: 'UK', price: '89.135', created_at: '2014-03-12'},
 											{name: 'Shirt', origin: 'Franc', price: '20.819', created_at: '2014-06-28'},
 											{name: 'Phone', origin: 'Finland', price: '374.386', created_at: '2014-07-22'},
-											{name: 'Car', origin: 'Germany', price: '879.9399', created_at: '2013-12-30'},
+											{name: 'Car', origin: 'Germany', price: '8796.9399', created_at: '2013-12-30'},
 											{name: 'Computer', origin: 'Canada', price: '958.192', created_at: '2014-08-23'} ]">
 	<h2>Products</h2>
-	<span>Filter: </span><input type="text" />
+	<span>Filter: </span><input type="text" data-ng-model="searchName.name"/>
 	<table>
 				<tr>
-					<th>Name</th>
-					<th>Origin</th>
-					<th>Price</th>
-					<th>Date</th>
+					<th data-ng-click="sortBy='name';reverse=!reverse">Name</th>
+					<th data-ng-click="sortBy='origin';reverse=!reverse">Origin</th>
+					<th data-ng-click="sortBy='price';reverse=!reverse">Price</th>
+					<th data-ng-click="sortBy='created_at';reverse=!reverse">Date</th>
 				</tr>
-				<tr data-ng-repeat="product in products | orderBy: 'name'">
+				<tr data-ng-repeat="product in products | filter:searchName | orderBy:sortBy:reverse">
 					<td>{{ product.name | lowercase }}</td>
 					<td>{{ product.origin | uppercase }}</td>
-					<td>{{ product.price | currency }}</td>
+					<td>{{ product.price | currency:"USD$ " }}</td>
 					<td>{{ product.created_at | date:'longDate' }}</td>
 				</tr>
 			</table>		
