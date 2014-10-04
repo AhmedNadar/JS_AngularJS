@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html data-ng-app>
+<head>
+	<title>AngularJS - Using Controller</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-ng-controller="ProductsController">
+	<h2>Products</h2>
+	<span>Filter: </span><input type="text" data-ng-model="searchName.name"/>
+	<table>
+				<tr>
+					<th data-ng-click="doSort('name')">Name</th>
+					<th data-ng-click="doSort('origin')">Origin</th>
+					<th data-ng-click="doSort('price')">Price</th>
+					<th data-ng-click="doSort('created_at')">Date</th>
+				</tr>
+				<tr data-ng-repeat="product in products | filter:searchName | orderBy:sortBy:reverse">
+					<td>{{ product.name | lowercase }}</td>
+					<td>{{ product.origin | uppercase }}</td>
+					<td>{{ product.price | currency:"USD$ " }}</td>
+					<td>{{ product.created_at | date:'longDate' }}</td>
+				</tr>
+			</table>
+			<br>
+			<span>Total Products: {{ products.length }}</span>		
+	<!-- Script -->
+	<script src="../js/angular.js" type="text/javascript"></script>
+	<script src="app/controllers/ProductsController.js"></script>
+</body>
+</html>
